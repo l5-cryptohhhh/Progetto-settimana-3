@@ -207,9 +207,6 @@ main {
   box-shadow: 0 0 0 2px rgba(184,134,11,0.2);
 }
 
-/*#ricerca { flex: 3; min-width: 200px; }
-#filtro  { flex: 1; min-width: 120px; }
-#ordinamento { flex: 1.5; min-width: 160px; }*/
 
 
 .statistiche {
@@ -427,6 +424,14 @@ body.dark .lista .libro-card {
   background: #252525;
   color: #e8e8e8;
   border-color: #3a3a3a;
+}
+
+body.dark .lista .libro-card.stato-da-leggere {
+    border-left: 4px solid #e0c060;
+}
+
+body.dark .lista .libro-card.stato-letto {
+    border-left: 4px solid #2e7d32;
 }
 
 body.dark .form h2,
