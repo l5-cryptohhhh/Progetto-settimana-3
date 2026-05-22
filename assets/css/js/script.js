@@ -135,25 +135,6 @@ document.getElementById("lista").addEventListener("click", function (e) {
   const id = parseInt(e.target.dataset.id);
   if (!id) return;
 
-  // BUTTON SU
-  if (e.target.classList.contains("btn-su")) {
-    const idx = album.findIndex(a => a.id === id);
-    if (idx > 0) {
-      [album[idx - 1], album[idx]] = [album[idx], album[idx - 1]];
-      render();
-    }
-    return;
-  }
-
-  // BUTTON GIU
-  if (e.target.classList.contains("btn-giu")) {
-    const idx = album.findIndex(a => a.id === id);
-    if (idx < album.length - 1) {
-      [album[idx], album[idx + 1]] = [album[idx + 1], album[idx]];
-      render();
-    }
-    return;
-  }
 
   // ELIMINA
   if (e.target.classList.contains("btn-elimina")) {
