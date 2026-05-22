@@ -1,0 +1,93 @@
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/css/img/Music Sheet .png">
+  <title>La mia Musicshelf</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="header-content">
+      <div>
+        <h1>La mia Musicshelf</h1>
+        <p class="sottotitolo">Aggiungi gli album che hai ascoltato o che vuoi ascoltare.</p>
+      </div>
+      <button id="btnTema">Tema scuro</button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="form">
+      <h2>Aggiungi un album</h2>
+      <form id="formAlbum">
+        <input type="text" id="titolo" placeholder="Titolo">
+        <input type="text" id="artista" placeholder="Artista">
+        <input type="number" id="anno" placeholder="Anno">
+        <select id="stato">
+          <option value="Non ascoltato">Non ascoltato</option>
+          <option value="Ascoltato">Ascoltato</option>
+        </select>
+        <button type="submit" class="btn-aggiungi">Aggiungi</button>
+      </form>
+    </section>
+
+    <section class="controlli">
+      <input type="text" id="ricerca" placeholder="Cerca per titolo o artista">
+      <select id="filtro">
+        <option value="Tutti">Tutti</option>
+        <option value="Ascoltato">Ascoltato</option>
+        <option value="Non ascoltato">Non ascoltato</option>
+      </select>
+      <select id="ordinamento">
+        <option value="anno-asc">Anno crescente</option>
+        <option value="anno-desc">Anno decrescente</option>
+        <option value="titolo-asc">Titolo A-Z</option>
+        <option value="titolo-desc">Titolo Z-A</option>
+      </select>
+    </section>
+
+    <section class="statistiche">
+      <div class="conteggi">
+        <div class="conteggio">
+          <span id="totale" class="numero">0</span>
+          <span class="etichetta">Totale</span>
+        </div>
+        <div class="conteggio">
+          <span id="ascoltati" class="numero">0</span>
+          <span class="etichetta">Ascoltati</span>
+        </div>
+        <div class="conteggio">
+          <span id="nonAscoltati" class="numero">0</span>
+          <span class="etichetta">Non ascoltati</span>
+        </div>
+      </div>
+      <div class="barra-container">
+        <div class="barra-sfondo">
+          <div id="barra" class="barra"></div>
+        </div>
+        <span class="barra-label">Percentuale ascoltati</span>
+      </div>
+    </section>
+    <div id="containList">
+      <section class="lista" id="lista"></section>
+    </div>
+
+    <div id="notifica"></div>
+
+  </main>
+
+  <footer>
+    <p>Musicshelf — Soluzione di riferimento — Epicode Full Stack AI 2026</p>
+  </footer>
+
+  <script src="assets/css/js/script.js"></script>
+
+
+</body>
+
+</html>

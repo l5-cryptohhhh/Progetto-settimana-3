@@ -1,0 +1,540 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: #111;
+  background: #bebebb46;
+  min-height: 100vh;
+}
+ 
+img {
+  max-width: 100%;
+  display: block;
+}
+ 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ 
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+ 
+#notifica {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #222;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  z-index: 999;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+ 
+header {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.header-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.sottotitolo {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-top: 2px;
+}
+
+#btnTema {
+  border: 1.5px solid #fff;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+#btnTema:hover {
+  background: #fff;
+  color: #111;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form {
+  background: #fff;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+.form h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #111;
+}
+
+#formAlbum {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+#formAlbum input,
+#formAlbum select {
+  padding: 9px 12px;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: #fff;
+  color: #111;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  height: 40px;
+}
+
+#formAlbum input:hover,
+#formAlbum select:hover {
+  border: 2px solid #b8860b;
+  box-shadow: 0 0 0 1px rgba(184,134,11,0.15);
+}
+
+#formAlbum input:focus,
+#formAlbum select:focus {
+  border: 2px solid #b8860b;
+  box-shadow: 0 0 0 2px rgba(184,134,11,0.2);
+}
+
+#titolo, #artista {
+  width: 250px;
+}
+
+#anno {
+  width: 100px;
+}
+
+#ricerca {
+  width: 50%;
+}
+
+#filtro, #ordinamento {
+  width: 23%;
+}
+
+.btn-aggiungi {
+  background: #b8860b;
+  color: #fff;
+  padding: 9px 22px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-aggiungi:hover {
+  background: #9a6f08;
+}
+
+.controlli {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.controlli input,
+.controlli select {
+  padding: 9px 12px;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: #fff;
+  color: #111;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  height: 40px;
+}
+
+.controlli input:hover,
+.controlli select:hover {
+  border: 2px solid #b8860b;
+  box-shadow: 0 0 0 1px rgba(184,134,11,0.15);
+}
+
+.controlli input:focus,
+.controlli select:focus {
+  border: 2px solid #b8860b;
+  box-shadow: 0 0 0 2px rgba(184,134,11,0.2);
+}
+
+/*#ricerca { flex: 3; min-width: 200px; }
+#filtro  { flex: 1; min-width: 120px; }
+#ordinamento { flex: 1.5; min-width: 160px; }*/
+
+
+.statistiche {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.conteggi {
+  display: flex;
+  gap: 24px;
+}
+
+.conteggio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.numero {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #b8860b;
+  line-height: 1.1;
+}
+
+.etichetta {
+  font-size: 0.78rem;
+  color: #888;
+  margin-top: 2px;
+}
+
+.barra-container {
+  flex: 1;
+  min-width: 180px;
+}
+
+.barra-sfondo {
+  background: #e5e0d8;
+  border-radius: 8px;
+  height: 14px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.barra {
+  height: 14px;
+  background: #b8860b;
+  border-radius: 8px;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+.barra-label {
+  font-size: 0.78rem;
+  color: #888;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#containList {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+.libro-card {
+  background: #ededec52;
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+  border-left: 4px solid #ddd;
+  border: 1.5px solid #e8e4de;
+  border-left: 4px solid #ddd;
+  transition: box-shadow 0.2s;
+}
+
+.libro-card:hover {
+  box-shadow: 0 3px 12px rgba(0,0,0,0.11);
+}
+
+.libro-card.stato-letto {
+  border-left: 4px solid #2e7d32;
+}
+
+.libro-card.stato-da-leggere {
+  border-left: 4px solid #e0c060;
+}
+
+.libro-info {
+  flex: 1;
+}
+
+.libro-titolo {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.libro-meta {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 2px;
+}
+
+.libro-azioni {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border: 1.5px solid;
+}
+
+.badge-letto {
+  color: #2e7d32;
+  border-color: #2e7d32;
+  background: #f0faf0;
+}
+
+.badge-da-leggere {
+  color: #7a6000;
+  border-color: #c8a000;
+  background: #fffbe6;
+}
+
+
+.btn-azione {
+  padding: 5px 13px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  border: 1.5px solid #ccc;
+  color: #444;
+  background: #fff;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn-azione:hover {
+  background: #f5f5f5;
+  border-color: #aaa;
+}
+
+.btn-elimina {
+  color: #c0392b;
+  border-color: #e8c0bb;
+}
+
+.btn-elimina:hover {
+  background: #fff5f5;
+  border-color: #c0392b;
+}
+
+
+.input-modifica {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1.5px solid #b8860b;
+  border-radius: 5px;
+  padding: 3px 8px;
+  outline: none;
+  width: 180px;
+}
+
+
+footer {
+  text-align: center;
+  padding: 24px;
+  color: #aaa;
+  font-size: 0.82rem;
+}
+
+
+body.dark {
+  background: #1a1a1a;
+  color: #e8e8e8;
+}
+
+body.dark header {
+  background: #0d0d0d;
+}
+
+
+body.dark #containList,
+body.dark .form,
+body.dark .controlli,
+body.dark .statistiche,
+body.dark .lista .libro-card {
+  background: #252525;
+  color: #e8e8e8;
+  border-color: #3a3a3a;
+}
+
+body.dark .form h2,
+body.dark .libro-titolo {
+  color: #e8e8e8;
+}
+
+body.dark #formAlbum input,
+body.dark #formAlbum select,
+body.dark .controlli input,
+body.dark .controlli select {
+  background: #333;
+  color: #e8e8e8;
+  border-color: #444;
+}
+
+body.dark .libro-meta,
+body.dark .etichetta,
+body.dark .barra-label {
+  color: #aaa;
+}
+
+body.dark .btn-azione {
+  background: #333;
+  border-color: #555;
+  color: #ddd;
+}
+
+body.dark .btn-azione:hover {
+  background: #3a3a3a;
+}
+
+body.dark .btn-elimina {
+  color: #ff6b6b;
+  border-color: #7a3030;
+}
+
+body.dark .btn-elimina:hover {
+  background: #3a2020;
+}
+
+body.dark .badge-letto {
+  background: #1a3a1a;
+}
+
+body.dark .badge-da-leggere {
+  background: #3a3000;
+}
+
+body.dark footer {
+  color: #666;
+}
+
+body.dark #notifica {
+  background: #e8e8e8;
+  color: #111;
+}
+
+
+.libro-card {
+  display: flex;
+  align-items: center;
+}
+
+.btn-riordino {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-right: 12px;
+}
+
+.btn-su,
+.btn-giu {
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  color: #555;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+  font-family: inherit;
+}
+
+.btn-su:hover:not(:disabled),
+.btn-giu:hover:not(:disabled) {
+  background: #f0f0f0;
+  border-color: #999;
+}
+
+.btn-su:disabled,
+.btn-giu:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+body.dark .btn-su,
+body.dark .btn-giu {
+  background: #333;
+  border-color: #555;
+  color: #ccc;
+}
+
+body.dark .btn-su:hover:not(:disabled),
+body.dark .btn-giu:hover:not(:disabled) {
+  background: #444;
+}
