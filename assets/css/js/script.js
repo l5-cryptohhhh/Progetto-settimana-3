@@ -1,9 +1,9 @@
 const datiIniziali = [
-  { id: 1, titolo: "Beauty Behind the Madness", artista: "The Weeknd", anno: 2015, stato: "Ascoltato"    },
-  { id: 2, titolo: "Thriller",                  artista: "Michael Jackson", anno: 1982, stato: "Ascoltato"    },
-  { id: 3, titolo: "Random Access Memories",    artista: "Daft Punk",  anno: 2013, stato: "Non ascoltato" },
-  { id: 4, titolo: "Back in Black",             artista: "AC/DC",      anno: 1980, stato: "Non ascoltato" },
-  { id: 5, titolo: "To Pimp a Butterfly",       artista: "Kendrick Lamar", anno: 2015, stato: "Ascoltato"  },
+  { id: 1, titolo: "Beauty Behind the Madness", artista: "The Weeknd", anno: 2015, stato: "Ascoltato" },
+  { id: 2, titolo: "Thriller", artista: "Michael Jackson", anno: 1982, stato: "Ascoltato" },
+  { id: 3, titolo: "Random Access Memories", artista: "Daft Punk", anno: 2013, stato: "Non ascoltato" },
+  { id: 4, titolo: "Back in Black", artista: "AC/DC", anno: 1980, stato: "Non ascoltato" },
+  { id: 5, titolo: "To Pimp a Butterfly", artista: "Kendrick Lamar", anno: 2015, stato: "Ascoltato" },
 ];
 let album = [];
 let filtroCorrente = "Tutti";
@@ -11,23 +11,23 @@ let ordinamentoCorrente = "anno-asc";
 let ricercaCorrente = "";
 
 const salvato = localStorage.getItem("dati");
-       if (salvato) {
-        album = JSON.parse(salvato);
-       } else {
-        album = [...datiIniziali];
-       }
- 
+if (salvato) {
+  album = JSON.parse(salvato);
+} else {
+  album = [...datiIniziali];
+}
+
 
 
 /* RENDER */
 function render() {
   let risultato = [...album];
- 
+
   // Filtra per stato
   if (filtroCorrente !== "Tutti") {
     risultato = risultato.filter(a => a.stato === filtroCorrente);
   }
- 
+
   // Filtra per ricerca
   if (ricercaCorrente.trim() !== "") {
     const q = ricercaCorrente.toLowerCase();
@@ -37,22 +37,22 @@ function render() {
         a.artista.toLowerCase().includes(q)
     );
   }
- 
+
   // Ordina
   risultato.sort((a, b) => {
     switch (ordinamentoCorrente) {
-      case "anno-asc":    return (a.anno || 0) - (b.anno || 0);
-      case "anno-desc":   return (b.anno || 0) - (a.anno || 0);
-      case "titolo-asc":  return a.titolo.localeCompare(b.titolo);
+      case "anno-asc": return (a.anno || 0) - (b.anno || 0);
+      case "anno-desc": return (b.anno || 0) - (a.anno || 0);
+      case "titolo-asc": return a.titolo.localeCompare(b.titolo);
       case "titolo-desc": return b.titolo.localeCompare(a.titolo);
-      default:            return 0;
+      default: return 0;
     }
   });
- 
+
   // Svuota il container DOM
   const lista = document.getElementById("lista");
   lista.innerHTML = "";
- 
+
   // Ricrea gli elementi DOM
   risultato.forEach(alb => {
     const card = document.createElement("div");
@@ -60,13 +60,13 @@ function render() {
       "libro-card " +
       (alb.stato === "Ascoltato" ? "stato-letto" : "stato-da-leggere");
     card.dataset.id = alb.id;
- 
+
     const badgeClass =
       alb.stato === "Ascoltato" ? "badge badge-letto" : "badge badge-da-leggere";
- 
+
     const btnToggleLabel =
       alb.stato === "Ascoltato" ? "Segna non ascoltato" : "Segna ascoltato";
- 
+
     card.innerHTML = `
       <div class="libro-info">
         <div class="libro-titolo">${alb.titolo}</div>
@@ -79,21 +79,21 @@ function render() {
         <button class="btn-azione btn-elimina" data-id="${alb.id}">Elimina</button>
       </div>
     `;
- 
+
     lista.appendChild(card);
   });
- 
+
   // Aggiorna statistiche
   const totale = album.length;
   const ascoltati = album.filter(a => a.stato === "Ascoltato").length;
   const nonAscoltati = totale - ascoltati;
   const percentuale = totale > 0 ? Math.round((ascoltati / totale) * 100) : 0;
- 
+
   document.getElementById("totale").textContent = totale;
   document.getElementById("ascoltati").textContent = ascoltati;
   document.getElementById("nonAscoltati").textContent = nonAscoltati;
   document.getElementById("barra").style.width = percentuale + "%";
- 
+
   localStorage.setItem("dati", JSON.stringify(album));
 }
 
@@ -103,17 +103,17 @@ function render() {
 
 document.getElementById("formAlbum").addEventListener("submit", function (event) {
   event.preventDefault();
- 
-  const titolo  = document.getElementById("titolo").value.trim();
+
+  const titolo = document.getElementById("titolo").value.trim();
   const artista = document.getElementById("artista").value.trim();
-  const anno    = document.getElementById("anno").value.trim();
-  const stato   = document.getElementById("stato").value;
- 
+  const anno = document.getElementById("anno").value.trim();
+  const stato = document.getElementById("stato").value;
+
   if (!titolo || !artista) {
     notifica("Titolo e artista sono obbligatori.");
     return;
   }
- 
+
   const nuovoAlbum = {
     id: Date.now(),
     titolo,
@@ -121,7 +121,7 @@ document.getElementById("formAlbum").addEventListener("submit", function (event)
     anno: anno ? parseInt(anno) : null,
     stato,
   };
- 
+
   album.push(nuovoAlbum);
   this.reset();
   render();
@@ -144,7 +144,7 @@ document.getElementById("lista").addEventListener("click", function (e) {
     }
     return;
   }
- 
+
   // BUTTON GIU
   if (e.target.classList.contains("btn-giu")) {
     const idx = album.findIndex(a => a.id === id);
@@ -154,7 +154,7 @@ document.getElementById("lista").addEventListener("click", function (e) {
     }
     return;
   }
- 
+
   // ELIMINA
   if (e.target.classList.contains("btn-elimina")) {
     album = album.filter(a => a.id !== id);
@@ -162,7 +162,7 @@ document.getElementById("lista").addEventListener("click", function (e) {
     notifica("Album eliminato.");
     return;
   }
- 
+
   // TOGGLE STATO
   if (e.target.classList.contains("btn-toggle")) {
     const alb = album.find(a => a.id === id);
@@ -172,23 +172,23 @@ document.getElementById("lista").addEventListener("click", function (e) {
     }
     return;
   }
- 
+
   // MODIFICA INLINE
   if (e.target.classList.contains("btn-modifica")) {
     const card = e.target.closest(".libro-card");
     const titoloEl = card.querySelector(".libro-titolo");
- 
+
     if (card.querySelector(".input-modifica")) return;
- 
+
     const valoreAttuale = titoloEl.textContent;
     const input = document.createElement("input");
     input.type = "text";
     input.className = "input-modifica";
     input.value = valoreAttuale;
- 
+
     titoloEl.replaceWith(input);
     input.focus();
- 
+
     function confermaModifica() {
       const nuovoTitolo = input.value.trim();
       if (nuovoTitolo) {
@@ -197,10 +197,10 @@ document.getElementById("lista").addEventListener("click", function (e) {
       }
       render();
     }
- 
+
     input.addEventListener("blur", confermaModifica);
     input.addEventListener("keydown", function (ev) {
-      if (ev.key === "Enter")  input.blur();
+      if (ev.key === "Enter") input.blur();
       if (ev.key === "Escape") render();
     });
   }
@@ -213,13 +213,13 @@ document.getElementById("ricerca").addEventListener("input", function () {
   ricercaCorrente = this.value;
   render();
 });
- 
+
 /* ─────────────────── FILTRO ─────────────────── */
 document.getElementById("filtro").addEventListener("change", function () {
   filtroCorrente = this.value;
   render();
 });
- 
+
 /* ─────────────────── ORDINAMENTO ─────────────────── */
 document.getElementById("ordinamento").addEventListener("change", function () {
   ordinamentoCorrente = this.value;
