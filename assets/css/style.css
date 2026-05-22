@@ -428,6 +428,20 @@ body.dark .lista .libro-card {
   border-color: #3a3a3a;
 }
 
+body.dark #filtro:hover,
+body.dark #ordinamento:hover,
+body.dark #ricerca:hover {
+  border: 2px solid #b8860b;
+}
+
+body.dark #titolo:hover,
+body.dark #artista:hover,
+body.dark #anno:hover,
+body.dark #stato:hover {
+  border: 2px solid #b8860b;
+}
+
+
 body.dark .lista .libro-card.stato-da-leggere {
   border-left: 4px solid #e0c060;
 }
@@ -496,52 +510,4 @@ body.dark #notifica {
 .libro-card {
   display: flex;
   align-items: center;
-}
-
-.btn-riordino {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  margin-right: 12px;
-}
-
-.btn-su,
-.btn-giu {
-  width: 26px;
-  height: 26px;
-  border: 1.5px solid #ccc;
-  border-radius: 5px;
-  background: #fff;
-  color: #555;
-  font-size: 0.8rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s, border-color 0.15s;
-  font-family: inherit;
-}
-
-.btn-su:hover:not(:disabled),
-.btn-giu:hover:not(:disabled) {
-  background: #f0f0f0;
-  border-color: #999;
-}
-
-.btn-su:disabled,
-.btn-giu:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
-body.dark .btn-su,
-body.dark .btn-giu {
-  background: #333;
-  border-color: #555;
-  color: #ccc;
-}
-
-body.dark .btn-su:hover:not(:disabled),
-body.dark .btn-giu:hover:not(:disabled) {
-  background: #444;
 }
